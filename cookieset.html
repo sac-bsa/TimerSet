@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookie Set for Timer</title>
+    <meta name="author" content="Mack Gregory" />
+  </head>
+  <body>
+    <div id="return">
+      <a href="index.php"><h2>
+        Go Back to Game
+        </h2></a>
+    </div>
+    <div id="Cookie_Box">
+      <h2>
+        These are the current site cookies
+      </h2>
+      <p id="Cookie_Display" onload="getMyCookies();"></p>
+    </div>
+    <div id="Set_Box">
+      <form autocomplete="off" id="Cookie_Form">
+        Group Name<input type="text" name="groupname"><br>
+        Game Name<input type="text" name="gamename"><br>
+        <button type="button" onclick="CookieSet();">
+          Set Cookies</button>
+        <p id="expirydate"></p>
+        <br>
+        <br>
+      </form>
+    </div>
+    
+    <script>
+      
+function CookieSet() {
+  var cookie = document.getElementById("Cookie_Form");
+  var text1 = "groupname =" + cookie.elements[0].value+"; ";
+  var text2 = "gamename  =" + cookie.elements[1].value+"; ";
+  var date = new Date();
+  date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+  var expires = "expires="+date.toUTCString()+"; ";
+  document.getElementById("expirydate").innerHTML = "This will expire by "+expires+" or when a new one is set";
+  var path = " path=/ "
+  document.cookie = text1+expires+path;
+  document.cookie = text2+expires+path;
+  getMyCookies();
+}
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function getMyCookies(){
+ document.getElementById("Cookie_Display").innerHTML = document.cookie;
+}
+    </script>
+  </body>
+</html>
