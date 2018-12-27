@@ -17,10 +17,11 @@ Ensure the table is already created having at least the following rows with the 
 Additionally each playing computer must identify themselves with the correct gamename through the "cookieset.html" page
 The groupname merely identifies which group came first. It may be used more in future iterations.
 
-
+See this project live at  http://Mackgregory.ml/Projects/TimerSet
 
 
 Planned Improvements:
   Admin page that establishes a too early to submit through the placement of a Row in the table.
   Automatic Deletion of Rows from table after 24 Hours
   Point System from admin page
+
